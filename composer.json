@@ -1,0 +1,54 @@
+{
+    "name": "szemul/framework",
+    "description": "Lightweight framework based on Slim 4 and Symfony console",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "josegonzalez/dotenv": "^3.2.0",
+        "nesbot/carbon": "^2.52.0",
+        "php-di/php-di": "^6.3",
+        "szemul/config": "^v1.0.0",
+        "szemul/database": "^v1.0.1",
+        "szemul/debugger": "^v1.0.1",
+        "szemul/dependency-injection": "^v1.0.0",
+        "szemul/error-handler": "^v1.0.0",
+        "szemul/helper": "^1.0.0",
+        "szemul/not-set-value": "^1.0.0",
+        "szemul/slim-error-handler-bridge": "dev-main",
+        "slim/psr7": "^1.4",
+        "slim/slim": "^4.8",
+        "symfony/console": "^5.1.11"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0.0",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "mockery/mockery": "^1.0",
+        "monolog/monolog": "^2.3.2",
+        "phpstan/phpstan": "^0.12.80",
+        "phpunit/phpunit": "^9.5.5",
+        "sentry/sdk": "^3.1.0",
+        "szemul/slim-sentry-bridge": "^1.0.0"
+    },
+    "suggest": {
+        "monolog/monolog": "For logging and using the LoggingBootstrap",
+        "sentry/sentry": "For error handling and tracing with sentry and using the SentryBootstrap",
+        "szemul/slim-sentry-bridge": "For error handling and tracing with sentry and using the SentryBootstrap"
+    },
+    "autoload": {
+        "psr-4": {
+            "Szemul\\Framework\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Szemul\\Framework\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
