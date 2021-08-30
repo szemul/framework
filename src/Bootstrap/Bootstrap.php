@@ -33,7 +33,7 @@ class Bootstrap
         string $appName,
         ?DefinitionProviderInterface $definitionProvider = null,
         ?ConfigBuilderInterface $configBuilder = null,
-    ): Container {
+    ): ContainerInterface {
         $configBuilders = [$this->getCommonConfigBuilder()];
 
         if (null !== $configBuilder) {
@@ -51,16 +51,15 @@ class Bootstrap
 
         $this->container = $this->buildContainer($appName, $environmentHandler, ...$definitionProviders);
 
+        $this->runBootstrappers(
+            ...array_map(fn (string $className) => $this->container->get($className), $this->commonBootstrappers),
+        );
+
         return $this->container;
     }
 
-    public function runBootstrappers(BootstrapInterface ...$additionalBootstrappers): void
+    public function runBootstrappers(BootstrapInterface ...$bootstrappers): void
     {
-        $bootstrappers = array_merge(
-            array_map(fn (string $className) => $this->container->get($className), $this->commonBootstrappers),
-            $additionalBootstrappers,
-        );
-
         foreach ($bootstrappers as $bootstrapper) {
             $bootstrapper($this->container);
         }
@@ -111,7 +110,7 @@ class Bootstrap
         string $appName,
         EnvironmentHandlerInterface $environmentHandler,
         DefinitionProviderInterface ...$definitionProviders,
-    ): Container {
+    ): ContainerInterface {
         $containerBuilder = new ContainerBuilder();
         $compileContainer = $environmentHandler->getValue('APP_COMPILE_CONTAINER', false);
 
