@@ -10,17 +10,17 @@
         "josegonzalez/dotenv": "^3.2.0",
         "nesbot/carbon": "^2.52.0",
         "php-di/php-di": "^6.3",
+        "slim/psr7": "^1.4",
+        "slim/slim": "^4.8",
+        "symfony/console": "^5.1.11",
         "szemul/config": "^v1.0.0",
-        "szemul/database": "^v1.0.1",
+        "szemul/database": "^1.0.2",
         "szemul/debugger": "^v1.0.1",
         "szemul/dependency-injection": "^v1.0.0",
         "szemul/error-handler": "^v1.0.0",
         "szemul/helper": "^1.0.0",
         "szemul/not-set-value": "^1.0.0",
-        "szemul/slim-error-handler-bridge": "dev-main",
-        "slim/psr7": "^1.4",
-        "slim/slim": "^4.8",
-        "symfony/console": "^5.1.11"
+        "szemul/slim-error-handler-bridge": "dev-main"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0.0",
