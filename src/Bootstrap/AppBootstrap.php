@@ -13,6 +13,7 @@ use Slim\ResponseEmitter;
 use Szemul\Config\ConfigInterface;
 use Szemul\ErrorHandler\ErrorHandlerRegistry;
 use Szemul\SlimErrorHandlerBridge\Handler\ErrorHandler;
+use Szemul\SlimErrorHandlerBridge\Renderer\JsonErrorRenderer;
 use Szemul\SlimSentryBridge\Middleware\SentryMiddleware;
 
 class AppBootstrap implements BootstrapInterface
@@ -69,13 +70,16 @@ class AppBootstrap implements BootstrapInterface
             false,
         );
 
-        $errorMiddleware->setDefaultErrorHandler(
-            new ErrorHandler(
-                $container->get(ErrorHandlerRegistry::class),
-                $app->getCallableResolver(),
-                $app->getResponseFactory(),
-            ),
+        $errorHandler = new ErrorHandler(
+            $container->get(ErrorHandlerRegistry::class),
+            $app->getCallableResolver(),
+            $app->getResponseFactory(),
         );
+
+        $jsonRenderer = $container->get(JsonErrorRenderer::class);
+        $errorHandler->registerErrorRenderer('application/json', $jsonRenderer);
+
+        $errorMiddleware->setDefaultErrorHandler($errorHandler);
     }
 
     protected function setRoutes(App $app): void
