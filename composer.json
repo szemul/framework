@@ -14,7 +14,7 @@
         "slim/slim": "^4.8",
         "symfony/console": "^5.1.11",
         "szemul/config": "^v1.0.0",
-        "szemul/database": "^1.0.2",
+        "szemul/database": "dev-main",
         "szemul/debugger": "^v1.0.1",
         "szemul/dependency-injection": "^v1.0.0",
         "szemul/error-handler": "^v1.0.0",
