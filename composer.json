@@ -23,6 +23,7 @@
         "szemul/slim-error-handler-bridge": "dev-main"
     },
     "require-dev": {
+        "consolidation/robo": "^3.0.5",
         "friendsofphp/php-cs-fixer": "^3.0.0",
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.0",
