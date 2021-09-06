@@ -13,7 +13,7 @@ class ErrorHelper
             402     => 'Billing error, payment required',
             403     => 'The authenticated user has no permission for this operation',
             404     => 'Entity not found',
-            422     => 'Unprocessable entity, the request contained invalid values',
+            422     => 'Unprocessable entity, the request contained invalid values. See params for details',
             default => 'Error',
         };
     }
