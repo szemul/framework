@@ -17,7 +17,7 @@
         "szemul/database": "dev-main",
         "szemul/debugger": "^v1.0.1",
         "szemul/dependency-injection": "^v1.0.0",
-        "szemul/error-handler": "^v1.0.0",
+        "szemul/error-handler": "^v1.0.0|dev-main",
         "szemul/helper": "dev-main",
         "szemul/not-set-value": "^1.0.0",
         "szemul/slim-error-handler-bridge": "dev-main"
@@ -31,11 +31,13 @@
         "phpstan/phpstan": "^0.12.80",
         "phpunit/phpunit": "^9.5.5",
         "sentry/sdk": "^3.1.0",
+        "szemul/debug-data-creator": "dev-main",
         "szemul/slim-sentry-bridge": "^1.0.0"
     },
     "suggest": {
         "monolog/monolog": "For logging and using the LoggingBootstrap",
         "sentry/sentry": "For error handling and tracing with sentry and using the SentryBootstrap",
+        "szemul/debug-data-creator": "For using the debug data creator",
         "szemul/slim-sentry-bridge": "For error handling and tracing with sentry and using the SentryBootstrap"
     },
     "autoload": {

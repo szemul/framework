@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace Szemul\Framework\Bootstrap;
 
-use DI\Container;
 use DI\ContainerBuilder;
-use JetBrains\PhpStorm\Pure;
+use Exception;
 use Psr\Container\ContainerInterface;
 use Szemul\Config\Builder\ConfigBuilderInterface;
 use Szemul\Config\ConfigInterface;
@@ -17,39 +16,28 @@ class Bootstrap
 {
     /** @var string[] */
     protected array $commonBootstrappers;
+    /** @var ConfigBuilderInterface[] */
+    protected array $configBuilders =[];
+    /** @var DefinitionProviderInterface[] */
+    protected array              $definitionProviders = [];
+    protected bool               $isStarted           = false;
     protected ContainerInterface $container;
 
     public function __construct(
         protected string $rootDirPath,
         protected ConfigInterface $config,
-        protected ConfigBuilderInterface $commonConfigBuilder,
-        protected DefinitionProviderInterface $commonDefinitionProvider,
         string ...$commonBoostrappers,
     ) {
         $this->commonBootstrappers = $commonBoostrappers;
     }
 
-    public function start(
-        string $appName,
-        ?DefinitionProviderInterface $definitionProvider = null,
-        ?ConfigBuilderInterface $configBuilder = null,
-    ): ContainerInterface {
-        $configBuilders = [$this->getCommonConfigBuilder()];
-
-        if (null !== $configBuilder) {
-            $configBuilders[] = $configBuilder;
-        }
-
+    public function start(string $appName): ContainerInterface
+    {
         $environmentHandler = $this->loadEnvironmentHandler(realpath($this->rootDirPath . '/.env'));
-        $this->buildConfig($appName, $environmentHandler, ...$configBuilders);
 
-        $definitionProviders = [$this->getCommonDefinitionProvider()];
+        $this->buildConfig($appName, $environmentHandler);
 
-        if (null !== $definitionProvider) {
-            $definitionProviders[] = $definitionProvider;
-        }
-
-        $this->container = $this->buildContainer($appName, $environmentHandler, ...$definitionProviders);
+        $this->container = $this->buildContainer($appName, $environmentHandler);
 
         $this->runBootstrappers(
             ...array_map(fn (string $className) => $this->container->get($className), $this->commonBootstrappers),
@@ -58,23 +46,37 @@ class Bootstrap
         return $this->container;
     }
 
+    public function addConfigBuilders(ConfigBuilderInterface ...$configBuilders): static
+    {
+        $this->configBuilders = array_merge($this->configBuilders, $configBuilders);
+
+        return $this;
+    }
+
+    public function addDefinitionProviders(DefinitionProviderInterface ...$definitionProviders): static
+    {
+        $this->definitionProviders = array_merge($this->definitionProviders, $definitionProviders);
+
+        return $this;
+    }
+
+    /** @return ConfigBuilderInterface[] */
+    public function getConfigBuilders(): array
+    {
+        return $this->configBuilders;
+    }
+
+    /** @return DefinitionProviderInterface[] */
+    public function getDefinitionProviders(): array
+    {
+        return $this->definitionProviders;
+    }
+
     public function runBootstrappers(BootstrapInterface ...$bootstrappers): void
     {
         foreach ($bootstrappers as $bootstrapper) {
             $bootstrapper($this->container);
         }
-    }
-
-    #[Pure]
-    protected function getCommonConfigBuilder(): ConfigBuilderInterface
-    {
-        return $this->commonConfigBuilder;
-    }
-
-    #[Pure]
-    protected function getCommonDefinitionProvider(): DefinitionProviderInterface
-    {
-        return $this->commonDefinitionProvider;
     }
 
     protected function loadEnvironmentHandler(string ...$dotEnvs): EnvironmentHandlerInterface
@@ -85,7 +87,6 @@ class Bootstrap
     protected function buildConfig(
         string $appName,
         EnvironmentHandlerInterface $environmentHandler,
-        ConfigBuilderInterface ...$configBuilders,
     ): void {
         $compileConfig = $environmentHandler->getValue('APP_COMPILE_CONFIG', false);
 
@@ -97,7 +98,7 @@ class Bootstrap
             }
         }
 
-        foreach ($configBuilders as $configBuilder) {
+        foreach ($this->configBuilders as $configBuilder) {
             $configBuilder->build($environmentHandler, $this->config);
         }
 
@@ -106,10 +107,12 @@ class Bootstrap
         }
     }
 
+    /**
+     * @throws Exception
+     */
     protected function buildContainer(
         string $appName,
         EnvironmentHandlerInterface $environmentHandler,
-        DefinitionProviderInterface ...$definitionProviders,
     ): ContainerInterface {
         $containerBuilder = new ContainerBuilder();
         $compileContainer = $environmentHandler->getValue('APP_COMPILE_CONTAINER', false);
@@ -121,7 +124,7 @@ class Bootstrap
             );
         }
 
-        foreach ($definitionProviders as $definitionProvider) {
+        foreach ($this->definitionProviders as $definitionProvider) {
             $containerBuilder->addDefinitions($definitionProvider->getDefinitions());
         }
 

@@ -16,6 +16,15 @@ abstract class ActionAbstract
     protected Response $response;
 
     /**
+     * @return array<string,mixed>|null
+     */
+    public function __debugInfo(): ?array
+    {
+        // Remove debuginfo because it would dump every class used in this action. Override if needed.
+        return [];
+    }
+
+    /**
      * @param array<string,string> $args
      *
      * @throws HttpSpecializedException
