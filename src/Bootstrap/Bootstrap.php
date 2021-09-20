@@ -31,8 +31,26 @@ class Bootstrap
         $this->commonBootstrappers = $commonBoostrappers;
     }
 
+    /** @return array<string,mixed> */
+    public function __debugInfo(): ?array
+    {
+        return [
+            'commonBootstrappers' => $this->commonBootstrappers,
+            'configBuilders'      => $this->configBuilders,
+            'definitionProviders' => $this->definitionProviders,
+            'isStarted'           => $this->isStarted,
+            'container'           => '*** Instance of ' . get_class($this->container),
+            'rootDirPath'         => $this->rootDirPath,
+            'configInterface'     => '*** Instance of ' . get_class($this->config),
+        ];
+    }
+
     public function start(string $appName): ContainerInterface
     {
+        if ($this->isStarted) {
+            throw new \RuntimeException('The bootstrap process has already been started');
+        }
+
         $environmentHandler = $this->loadEnvironmentHandler(realpath($this->rootDirPath . '/.env'));
 
         $this->buildConfig($appName, $environmentHandler);
@@ -43,11 +61,19 @@ class Bootstrap
             ...array_map(fn (string $className) => $this->container->get($className), $this->commonBootstrappers),
         );
 
+        $this->isStarted = true;
+
         return $this->container;
     }
 
     public function addConfigBuilders(ConfigBuilderInterface ...$configBuilders): static
     {
+        if ($this->isStarted) {
+            throw new \RuntimeException(
+                'The bootstrap process has already been started. Adding configBuilders after start is not allowed',
+            );
+        }
+
         $this->configBuilders = array_merge($this->configBuilders, $configBuilders);
 
         return $this;
@@ -55,6 +81,12 @@ class Bootstrap
 
     public function addDefinitionProviders(DefinitionProviderInterface ...$definitionProviders): static
     {
+        if ($this->isStarted) {
+            throw new \RuntimeException(
+                'The bootstrap process has already been started. Adding definitionProviders after start is not allowed',
+            );
+        }
+
         $this->definitionProviders = array_merge($this->definitionProviders, $definitionProviders);
 
         return $this;
