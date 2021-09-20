@@ -26,6 +26,15 @@ class AppBootstrap implements BootstrapInterface
         $this->middlewares = $middlewares;
     }
 
+    /** @return array<string,mixed>|null */
+    public function __debugInfo(): ?array
+    {
+        return [
+            'middlewares' => array_map(fn ($value) => '*** Instance of ' . get_class($value), $this->middlewares),
+            'router'      => '*** Instance of ' . get_class($this->router),
+        ];
+    }
+
     public function __invoke(ContainerInterface $container): void
     {
         $app = $this->setupApp($container);

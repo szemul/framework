@@ -31,7 +31,7 @@ class Bootstrap
         $this->commonBootstrappers = $commonBoostrappers;
     }
 
-    /** @return array<string,mixed> */
+    /** @return array<string,mixed>|null */
     public function __debugInfo(): ?array
     {
         return [
