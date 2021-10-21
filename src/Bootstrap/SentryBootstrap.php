@@ -34,9 +34,5 @@ class SentryBootstrap implements BootstrapInterface
         /** @var ErrorHandlerRegistry $errorHandlerRegistry */
         $errorHandlerRegistry = $container->get(ErrorHandlerRegistry::class);
         $errorHandlerRegistry->addErrorHandler($container->get(SentryErrorHandler::class));
-
-        /** @var ErrorHandlerRegistry $errorHandlerRegistry */
-        $errorHandlerRegistry = $container->get(ErrorHandlerRegistry::class);
-        $errorHandlerRegistry->addErrorHandler($container->get(SentryErrorHandler::class));
     }
 }
