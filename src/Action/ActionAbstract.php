@@ -5,7 +5,6 @@ namespace Szemul\Framework\Action;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpSpecializedException;
 
 abstract class ActionAbstract
@@ -42,18 +41,6 @@ abstract class ActionAbstract
      * @throws HttpSpecializedException
      */
     abstract protected function action(): Response;
-
-    /**
-     * @throws HttpBadRequestException
-     */
-    protected function resolveArg(string $name): mixed
-    {
-        if (!isset($this->args[$name])) {
-            throw new HttpBadRequestException($this->request, "Could not resolve argument `{$name}`.");
-        }
-
-        return $this->args[$name];
-    }
 
     /** @param mixed[]|object|null $data */
     protected function respondWithData(array|object|null $data = null, int $statusCode = 200): Response
