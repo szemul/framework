@@ -11,9 +11,9 @@ use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\ResponseEmitter;
 use Szemul\Config\ConfigInterface;
-use Szemul\ErrorHandler\ErrorHandlerRegistry;
 use Szemul\SlimErrorHandlerBridge\Handler\ErrorHandler;
 use Szemul\SlimErrorHandlerBridge\Renderer\JsonErrorRenderer;
+use Szemul\SlimErrorHandlerBridge\ThrowableForwarder\ForwarderInterface;
 use Szemul\SlimSentryBridge\Middleware\SentryMiddleware;
 
 class AppBootstrap implements BootstrapInterface
@@ -80,7 +80,7 @@ class AppBootstrap implements BootstrapInterface
         );
 
         $errorHandler = new ErrorHandler(
-            $container->get(ErrorHandlerRegistry::class),
+            $container->get(ForwarderInterface::class),
             $app->getCallableResolver(),
             $app->getResponseFactory(),
         );
