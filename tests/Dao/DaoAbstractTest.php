@@ -42,7 +42,7 @@ class DaoAbstractTest extends TestCase
             ->with(false)
             ->andReturn($mock);
 
-        $this->assertSame($mock, $this->sut->getConnection());
+        $this->assertSame($mock, $this->sut->getConnection()); // @phpstan-ignore-line
     }
 
     public function testGetConnectionWithReadOnly(): void
@@ -55,6 +55,6 @@ class DaoAbstractTest extends TestCase
             ->with(true)
             ->andReturn($mock);
 
-        $this->assertSame($mock, $this->sut->getConnection(true));
+        $this->assertSame($mock, $this->sut->getConnection(true)); // @phpstan-ignore-line
     }
 }

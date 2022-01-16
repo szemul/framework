@@ -7,6 +7,6 @@ use Szemul\Framework\Robo\ApplicationConfig;
 
 interface GeneratorInterface
 {
-    /** @param array<string,array> $jsonContent */
+    /** @param array<string,mixed[]> $jsonContent */
     public function addErrorsToOpenApiJsonContent(array &$jsonContent, ApplicationConfig $config): void;
 }

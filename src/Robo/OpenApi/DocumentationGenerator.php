@@ -18,7 +18,6 @@ class DocumentationGenerator
 
     /**
      * @param CollectionBuilder[]|Exec[] $roboTasks
-     * @param ApplicationConfig ...$configs
      */
     public function generate(array $roboTasks, ApplicationConfig ...$configs): void
     {
