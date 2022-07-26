@@ -18,7 +18,7 @@ class ErrorHelper
         };
     }
 
-    /** @return array<string,array<string,array<string,string>>> */
+    /** @return array<string,array<string,array<string,string>>|string> */
     public static function getApiDocErrorResponseDefinitionForCode(int $errorCode): array
     {
         $errorDefinition = [

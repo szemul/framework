@@ -84,7 +84,6 @@ abstract class RoboFileAbstract extends Tasks
      *
      * @option $no-dev Do not install development dependencies
      */
-    // @phpstan-ignore-next-line
     public function buildComposer(array $opts = ['no-dev' => false]): Result
     {
         $composer = $this->taskComposerInstall();
@@ -103,7 +102,6 @@ abstract class RoboFileAbstract extends Tasks
     /**
      * Run the migrations
      */
-    // @phpstan-ignore-next-line
     public function migrate(): Result
     {
         $this->requireMinimumRequirements();
@@ -120,7 +118,6 @@ abstract class RoboFileAbstract extends Tasks
      *
      * @throws Exception
      */
-    // @phpstan-ignore-next-line
     public function testBehat(array $opts = ['silent|s' => false]): Result
     {
         $this->requireMinimumRequirements();

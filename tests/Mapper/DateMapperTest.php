@@ -13,10 +13,10 @@ class DateMapperTest extends TestCase
 {
     public function testMapTimeToString_shouldConvertToUTCAndMapObjectToString(): void
     {
-        $time   = Carbon::parse('2022-06-04 12:00:00', new DateTimeZone('CEST'));
+        $time   = Carbon::parse('2022-06-04 12:00:00', new DateTimeZone('Europe/Budapest'));
         $result = (new DateMapper())->mapTimeToString($time);
 
-        $this->assertSame('2022-06-04 11:00:00', $result);
+        $this->assertSame('2022-06-04 10:00:00', $result);
     }
 
     public function testMapStringToTime_shouldConvertToObjectInUTC(): void
