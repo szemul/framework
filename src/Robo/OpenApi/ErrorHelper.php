@@ -32,6 +32,7 @@ class ErrorHelper
                     'description' => 'Description of the error',
                 ],
             ],
+            'type' => 'object',
         ];
 
         if (422 == $errorCode) {
