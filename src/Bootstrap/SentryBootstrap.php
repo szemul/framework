@@ -9,6 +9,7 @@ use Szemul\ErrorHandler\ErrorHandlerRegistry;
 use Szemul\ErrorHandler\ShutdownHandlerRegistry;
 use Szemul\LoggingErrorHandling\ErrorHandler\SentryErrorHandler;
 use Szemul\SlimSentryBridge\ShutdownHandler\SentryShutdownHandler;
+
 use function Sentry\init;
 
 class SentryBootstrap implements BootstrapInterface
