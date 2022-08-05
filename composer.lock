@@ -2386,19 +2386,20 @@
         },
         {
             "name": "szemul/helper",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szemul/helper.git",
-                "reference": "9fb0a7cf0c0dd729ca33297dfe6b5f9964e975d3"
+                "reference": "bb7a77d9407baddce3b15580c7a2b9540ee27e4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szemul/helper/zipball/9fb0a7cf0c0dd729ca33297dfe6b5f9964e975d3",
-                "reference": "9fb0a7cf0c0dd729ca33297dfe6b5f9964e975d3",
+                "url": "https://api.github.com/repos/szemul/helper/zipball/bb7a77d9407baddce3b15580c7a2b9540ee27e4b",
+                "reference": "bb7a77d9407baddce3b15580c7a2b9540ee27e4b",
                 "shasum": ""
             },
             "require": {
+                "ext-iconv": "*",
                 "nesbot/carbon": "^2.52.0",
                 "php": "^8.0"
             },
@@ -2422,9 +2423,9 @@
             "description": "Collection of different helpers",
             "support": {
                 "issues": "https://github.com/szemul/helper/issues",
-                "source": "https://github.com/szemul/helper/tree/1.1.0"
+                "source": "https://github.com/szemul/helper/tree/1.2.0"
             },
-            "time": "2021-10-25T01:54:45+00:00"
+            "time": "2022-08-05T20:27:38+00:00"
         },
         {
             "name": "szemul/not-set-value",
@@ -8111,5 +8112,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

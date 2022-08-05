@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Szemul\Framework\Bootstrap;
@@ -11,13 +12,14 @@ use Szemul\Config\ConfigInterface;
 use Szemul\Config\Environment\EnvironmentHandler;
 use Szemul\Config\Environment\EnvironmentHandlerInterface;
 use Szemul\DependencyInjection\Provider\DefinitionProviderInterface;
+use Szemul\Helper\PhpStringHelper;
 
 class Bootstrap
 {
     /** @var string[] */
     protected array $commonBootstrappers;
     /** @var ConfigBuilderInterface[] */
-    protected array $configBuilders =[];
+    protected array $configBuilders = [];
     /** @var DefinitionProviderInterface[] */
     protected array              $definitionProviders = [];
     protected bool               $isStarted           = false;
@@ -150,9 +152,12 @@ class Bootstrap
         $compileContainer = $environmentHandler->getValue('APP_COMPILE_CONTAINER', false);
 
         if ($compileContainer) {
+            $phpStringHelper      = new PhpStringHelper();
+            $classNameFromAppName = $phpStringHelper->convertToClassName($appName);
+
             $containerBuilder->enableCompilation(
                 $this->getCacheDir($environmentHandler, 'container'),
-                'Compiled' . $appName . 'Container',
+                'Compiled' . $classNameFromAppName . 'Container',
             );
         }
 
