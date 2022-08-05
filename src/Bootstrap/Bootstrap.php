@@ -60,7 +60,7 @@ class Bootstrap
         $this->container = $this->buildContainer($appName, $environmentHandler);
 
         $this->runBootstrappers(
-            ...array_map(fn(string $className) => $this->container->get($className), $this->commonBootstrappers),
+            ...array_map(fn (string $className) => $this->container->get($className), $this->commonBootstrappers),
         );
 
         $this->isStarted = true;
