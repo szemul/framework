@@ -18,7 +18,7 @@
         "szemul/debugger": "^v1.0.1",
         "szemul/dependency-injection": "^v1.0.0",
         "szemul/error-handler": "^2.0.0",
-        "szemul/helper": "^1.1.0",
+        "szemul/helper": "^1.2.0",
         "szemul/not-set-value": "^1.0.0|^2.0.0",
         "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0"
     },
