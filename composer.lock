@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed69c16e5c5ffb92d54fb4da9e23ba01",
+    "content-hash": "46fa2c9b5c9633e0d8da01e3f2037a86",
     "packages": [
         {
             "name": "emulgeator/enum",
