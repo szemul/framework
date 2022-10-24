@@ -9,8 +9,8 @@ use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Szemul\Config\ConfigInterface;
-use Szemul\LoggingErrorHandling\Context\ContextInterface;
-use Szemul\LoggingErrorHandling\Log\Monolog\Formatter\ContextAwareJsonFormatter;
+use Szemul\LoggingErrorHandlingContext\ContextInterface;
+use Szemul\MonologLoggingContext\Formatter\ContextAwareJsonFormatter;
 
 class LoggingBootstrap implements BootstrapInterface
 {

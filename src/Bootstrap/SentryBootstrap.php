@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use Szemul\Config\ConfigInterface;
 use Szemul\ErrorHandler\ErrorHandlerRegistry;
 use Szemul\ErrorHandler\ShutdownHandlerRegistry;
-use Szemul\LoggingErrorHandling\ErrorHandler\SentryErrorHandler;
+use Szemul\SentryErrorHandler\SentryErrorHandler;
 use Szemul\SlimSentryBridge\ShutdownHandler\SentryShutdownHandler;
 
 use function Sentry\init;
@@ -23,7 +23,7 @@ class SentryBootstrap implements BootstrapInterface
             'dsn'                  => $config->get('application.sentry.dsn'),
             'traces_sample_rate'   => $config->get('application.sentry.tracesSampleRate'),
             'environment'          => $config->get('system.environment'),
-            'release'              => $config->get('system.relaseVersion', null),
+            'release'              => $config->get('system.releaseVersion', null),
         ];
 
         init($sentryOptions);
