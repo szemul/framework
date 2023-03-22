@@ -12,7 +12,7 @@
         "php-di/php-di": "^6.3",
         "slim/psr7": "^1.4",
         "slim/slim": "^4.8",
-        "symfony/console": "^5.1.11",
+        "symfony/console": "^5|^6",
         "szemul/config": "^1.0.1",
         "szemul/database": "^1.0.3|^2.0.0|^3.0.0",
         "szemul/debugger": "^v1.0.1",
