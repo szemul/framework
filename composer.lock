@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8738357ede2ad7d1185593dc46fc4c71",
+    "content-hash": "c2f0bf8586bb1f9a400b3181f4283ea5",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -2356,16 +2356,16 @@
         },
         {
             "name": "szemul/slim-error-handler-bridge",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szemul/slim-error-handler-bridge.git",
-                "reference": "d30fa53a3f0526ae91de41f19e40d46b1491cca2"
+                "reference": "dd4f13fa3c1db070ac73362b3ae68b047bbb412e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szemul/slim-error-handler-bridge/zipball/d30fa53a3f0526ae91de41f19e40d46b1491cca2",
-                "reference": "d30fa53a3f0526ae91de41f19e40d46b1491cca2",
+                "url": "https://api.github.com/repos/szemul/slim-error-handler-bridge/zipball/dd4f13fa3c1db070ac73362b3ae68b047bbb412e",
+                "reference": "dd4f13fa3c1db070ac73362b3ae68b047bbb412e",
                 "shasum": ""
             },
             "require": {
@@ -2396,9 +2396,9 @@
             "description": "Slim-error handler bridge",
             "support": {
                 "issues": "https://github.com/szemul/slim-error-handler-bridge/issues",
-                "source": "https://github.com/szemul/slim-error-handler-bridge/tree/2.0.1"
+                "source": "https://github.com/szemul/slim-error-handler-bridge/tree/3.0.0"
             },
-            "time": "2022-12-05T08:52:24+00:00"
+            "time": "2023-06-25T12:00:13+00:00"
         }
     ],
     "packages-dev": [
