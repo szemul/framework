@@ -20,7 +20,7 @@
         "szemul/error-handler": "^2.0.0",
         "szemul/helper": "^1.2.0",
         "szemul/not-set-value": "^1.0.0|^2.0.0",
-        "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0"
+        "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0|^3.0.0"
     },
     "require-dev": {
         "consolidation/robo": "^3.0.5",
