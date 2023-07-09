@@ -7,6 +7,7 @@ namespace Szemul\Framework\Bootstrap;
 use DI\ContainerBuilder;
 use Exception;
 use Psr\Container\ContainerInterface;
+use Szemul\Bootstrap\BootstrapInterface;
 use Szemul\Config\Builder\ConfigBuilderInterface;
 use Szemul\Config\ConfigInterface;
 use Szemul\Config\Environment\EnvironmentHandler;
