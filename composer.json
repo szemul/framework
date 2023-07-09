@@ -6,41 +6,21 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
-        "ext-pdo": "*",
-        "josegonzalez/dotenv": "^3.2.0",
         "nesbot/carbon": "^2.52.0",
         "php-di/php-di": "^6.3",
         "slim/psr7": "^1.4",
         "slim/slim": "^4.8",
-        "symfony/console": "^5|^6",
+        "szemul/bootstrap": "^1.0.0",
         "szemul/config": "^1.0.1",
-        "szemul/database": "^1.0.3|^2.0.0|^3.0.0",
-        "szemul/debugger": "^v1.0.1",
         "szemul/dependency-injection": "^v1.0.0",
-        "szemul/error-handler": "^2.0.0",
-        "szemul/helper": "^1.2.0",
-        "szemul/not-set-value": "^1.0.0|^2.0.0",
-        "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0|^3.0.0"
+        "szemul/helper": "^1.2.0"
     },
     "require-dev": {
-        "consolidation/robo": "^3.0.5",
         "friendsofphp/php-cs-fixer": "^3.0.0",
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.0",
-        "monolog/monolog": "^2.3.2",
         "phpstan/phpstan": "^1.4.0",
-        "phpunit/phpunit": "^9.5.5",
-        "sentry/sdk": "^3.1.0",
-        "szemul/debug-data-creator": "^1.0.0",
-        "szemul/monolog-logging-context": "^1.0.0",
-        "szemul/sentry-error-handler": "^1.1.1",
-        "szemul/slim-sentry-bridge": "^1.0.1"
-    },
-    "suggest": {
-        "monolog/monolog": "For logging and using the LoggingBootstrap",
-        "sentry/sentry": "For error handling and tracing with sentry and using the SentryBootstrap",
-        "szemul/debug-data-creator": "For using the debug data creator",
-        "szemul/slim-sentry-bridge": "For error handling and tracing with sentry and using the SentryBootstrap"
+        "phpunit/phpunit": "^9.5.5"
     },
     "autoload": {
         "psr-4": {
@@ -54,6 +34,7 @@
     },
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": false
     }
 }
