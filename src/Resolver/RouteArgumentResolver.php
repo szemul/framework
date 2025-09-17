@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Szemul\Framework\Resolver;
 
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Routing\Route;
@@ -14,7 +15,7 @@ class RouteArgumentResolver
      */
     public function resolveArgument(ServerRequestInterface $request, string $argument): string
     {
-        /** @var Route|null $route */
+        /** @var Route<ContainerInterface>|null $route */
         $route = $request->getAttribute('__route__');
 
         if (null === $route) {

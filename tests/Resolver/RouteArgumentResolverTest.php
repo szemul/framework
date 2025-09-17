@@ -45,7 +45,7 @@ class RouteArgumentResolverTest extends TestCase
         $this->expectAttributeRetrievedFromRoute($route, $key);
         $this->expectException(HttpBadRequestException::class);
 
-        $this->assertNull($sut->resolveArgument($this->request, $key));
+        $this->assertNull($sut->resolveArgument($this->request, $key)); //@phpstan-ignore-line
     }
 
     public function testResolveArgumentWithNoRouteSet_shouldThrowException(): void
@@ -55,7 +55,7 @@ class RouteArgumentResolverTest extends TestCase
         $this->expectNoRouteSet();
         $this->expectException(HttpBadRequestException::class);
 
-        $this->assertNull($sut->resolveArgument($this->request, $key));
+        $this->assertNull($sut->resolveArgument($this->request, $key));  //@phpstan-ignore-line
     }
 
     private function expectNoRouteSet(): void
@@ -67,7 +67,7 @@ class RouteArgumentResolverTest extends TestCase
             ->andReturnNull();
     }
 
-    private function expectRouteSet(): Route|MockInterface|LegacyMockInterface
+    private function expectRouteSet(): Route|MockInterface|LegacyMockInterface //@phpstan-ignore-line
     {
         $route = Mockery::mock(Route::class);
 
@@ -80,6 +80,7 @@ class RouteArgumentResolverTest extends TestCase
         return $route;
     }
 
+    // @phpstan-ignore-next-line
     private function expectAttributeRetrievedFromRoute(
         Route|MockInterface|LegacyMockInterface $route,
         string $key,

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Szemul\Framework\Test\Action\Health;
 
 use Mockery;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Psr7\Response;
 use Szemul\Framework\Action\Health\HeartbeatAction;
@@ -18,7 +17,6 @@ class HeartbeatActionTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request  = Mockery::mock(ServerRequestInterface::class);
-        /** @var ResponseInterface $response */
         $response = new Response();
 
         $result = $sut($request, $response, []);
